@@ -1,136 +1,68 @@
-# Shape Detection Challenge
+# 🔷 Shape Detection - Flam Project
 
-## Overview
+An intelligent web-based **Shape Detection System** built with TypeScript, HTML5 Canvas, and Vite.  
+This project detects and classifies geometric shapes such as **circles, triangles, rectangles, pentagons, and stars** from uploaded or preloaded test images — directly in the browser, using pure image processing algorithms (no external CV libraries).
 
-This challenge tests your ability to implement shape detection algorithms that can identify and classify the  geometric shapes in images:
+---
 
-## Setup Instructions
+## 🚀 Live Demo
+👉 [https://SriBhuvanaSankar.github.io/Shape-detection-Flam](https://SriBhuvanaSankar.github.io/Shape-detection-Flam) *(if deployed with GitHub Pages)*
+
+---
+
+## 🧠 Overview
+The project analyzes an image’s pixel data, performs:
+- Grayscale conversion  
+- Adaptive thresholding  
+- Flood-fill contour detection  
+- Polygon approximation  
+- Shape classification (vertex analysis & radius variance)  
+
+and returns:
+- Shape type  
+- Confidence score  
+- Bounding box  
+- Area and center coordinates  
+
+All results are visualized on a canvas overlay.
+
+---
+
+## 🧩 Features
+✅ Detects **five major shapes:** circle, triangle, rectangle, pentagon, star  
+✅ Works on **colored or grayscale** images  
+✅ Supports **light or dark backgrounds** (auto polarity detection)  
+✅ Draws bounding boxes and shape labels directly on canvas  
+✅ Instant feedback for test and uploaded images  
+✅ No external ML or OpenCV — uses **pure browser-native math**  
+
+---
+
+## 🛠️ Tech Stack
+| Layer | Technology |
+|-------|-------------|
+| Frontend | TypeScript + HTML5 + CSS |
+| Build Tool | [Vite](https://vitejs.dev/) |
+| Image Processing | Canvas API |
+| Algorithms | Custom geometric + contour-based shape detection |
+| UI Components | Native DOM & CSS |
+
+---
+
+## ⚙️ Setup Instructions
 
 ### Prerequisites
-
-- Node.js (version 16 or higher)
-- npm or yarn package manager
+- Node.js (v16 or higher)
+- npm (v8 or higher)
 
 ### Installation
-
 ```bash
+# Clone your repository
+git clone https://github.com/SriBhuvanaSankar/Shape-detection-Flam.git
+cd Shape-detection-Flam
+
 # Install dependencies
 npm install
 
-# Start development server
+# Start the development server
 npm run dev
-```
-
-### Project Structure
-
-```
-shape-detector/
-├── src/
-│   ├── main.ts          # Main application code (implement here)
-│   └── style.css        # Basic styling
-├── test-images/         # Test images directory
-├── expected_results.json # Expected detection results
-├── index.html          # Application UI
-└── README.md           # This file
-```
-
-## Challenge Requirements
-
-### Primary Task
-
-Implement the `detectShapes()` method in the `ShapeDetector` class located in `src/main.ts`. This method should:
-
-1. Analyze the provided `ImageData` object
-2. Detect all geometric shapes present in the image
-3. Classify each shape into one of the five required categories
-4. Return detection results with specified format
-
-### Implementation Location
-
-```typescript
-// File: src/main.ts
-async detectShapes(imageData: ImageData): Promise<DetectionResult> {
-  // TODO: Implement your shape detection algorithm here
-  // This is where you write your code
-}
-```
-
-
-## Test Images
-
-The `test-images/` directory contains 10 test images with varying complexity:
-
-1. **Simple shapes** - Clean, isolated geometric shapes
-2. **Mixed scenes** - Multiple shapes in single image
-3. **Complex scenarios** - Overlapping shapes, noise, rotated shapes
-4. **Edge cases** - Very small shapes, partial occlusion
-5. **Negative cases** - Images with no detectable shapes
-
-See `expected_results.json` for detailed expected outcomes for each test image.
-
-## Evaluation Criteria
-
-Your implementation will be assessed on:
-
-### 1. Shape Detection Accuracy (40%)
-
-- Correctly identifying all shapes present in test images
-- Minimizing false positives (detecting shapes that aren't there)
-- Handling various shape sizes, orientations, and positions
-
-### 2. Classification Accuracy (30%)
-
-- Correctly classifying detected shapes into the right categories
-- Distinguishing between similar shapes (e.g., square vs. rectangle)
-- Handling edge cases and ambiguous shapes
-
-### 3. Precision Metrics (20%)
-
-- **Bounding Box Accuracy**: IoU > 0.7 with expected bounding boxes
-- **Center Point Accuracy**: < 10 pixels distance from expected centers
-- **Area Calculation**: < 15% error from expected area values
-- **Confidence Calibration**: Confidence scores should reflect actual accuracy
-
-### 4. Code Quality & Performance (10%)
-
-- Clean, readable, well-documented code
-- Efficient algorithms (< 2000ms processing time per image)
-- Proper error handling
-                |
-
-## Implementation Guidelines
-
-### Allowed Approaches
-
-- Computer vision algorithms (edge detection, contour analysis)
-- Mathematical shape analysis (geometric properties, ratios)
-- Pattern recognition techniques
-- Image processing operations
-- Any algorithm you can implement from scratch
-
-### Constraints
-
-- No external computer vision libraries (OpenCV, etc.)
-- Use only browser-native APIs and basic math operations
-- No pre-trained machine learning models
-- Work with the provided `ImageData` object format
-
-
-## Testing Your Solution
-
-1. Use the web interface to upload and test images
-2. Compare your results with `expected_results.json`
-3. Test with the provided test images
-4. Verify detection accuracy and confidence scores
-5. Check processing time performance
-
-## Submission Guidelines
-
-Your final submission should include:
-
-- Completed implementation in `src/main.ts`
-- Any additional helper functions or classes you created
-- Brief documentation of your approach (comments in code)
-- Test results or performance notes (optional)
-
-
